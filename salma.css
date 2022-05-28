@@ -1,0 +1,40 @@
+.card{
+    height: 300px;
+    width: 300px;
+    border-radius: 4px;
+
+    display: grid;
+    place-items: center;  /* shorthand for align-items and justify-items*/
+    grid-template-areas: "main";/* created  a single cell*/
+
+    overflow: hidden;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.card > *{
+    grid-area: main; /* both items occupy same cell*/
+}
+.card> .image{
+    width: 100%;
+    aspect-ratio: 1/1; /* this forces the image to be square*/
+    object-fit: cover;
+
+    transition: transform 400ms, filter 400ms;
+}
+.card> .text{
+    opacity: 0;
+    color: aliceblue;
+    font-size: 1.8em;
+
+    transition: transform 400ms, filter 400ms;
+}
+
+.card:is(:hover, :focus) > .image{  /* applied on both hover and focus*/
+    transform:scale(1.1);
+    filter: brightness(0.4);
+}
+.card:is(:hover, :focus) > .text{
+    transform: scale(1.2);
+    opacity: 1;
+}
